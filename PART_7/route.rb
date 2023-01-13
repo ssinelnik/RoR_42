@@ -1,12 +1,17 @@
 require_relative 'instance_counter'
+require_relative 'validate'
 
 class Route
+  include InstanceCounter
+  include Validate
+
   attr_reader :stations, :name
 
   def initialize(name, first_station, last_station)
     @name = name
+    validate!
     @stations = [first_station, last_station]
-    validate! # call
+    register_instance
   end
 
   def add_station(station)
@@ -21,16 +26,11 @@ class Route
     @stations.each.with_index(1) { |station, index| puts "#{index}. #{station.name}" }
   end
 
-  def valid?
-    validate!
-    true
-  rescue
-    false
-  end
+  private
 
-  protected
+  attr_writer :stations
 
   def validate!
-    # realization
+    raise "Number can't be nil" if name.nil?
   end
 end

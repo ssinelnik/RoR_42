@@ -15,5 +15,6 @@ require_relative 'rail_road'
 # -- modules --
 require_relative 'russian_railways'
 require_relative 'instance_counter'
+require_relative 'validate'
 
 RailRoad.new.start

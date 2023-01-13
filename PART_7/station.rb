@@ -1,7 +1,9 @@
 require_relative 'instance_counter'
+require_relative 'validate'
 
 class Station
   include InstanceCounter
+  include Validate
 
   attr_reader :name, :trains
 
@@ -13,6 +15,7 @@ class Station
 
   def initialize(name)
     @name = name
+    validate!
     @trains = []
     @@stations << self
     register_instance
@@ -28,6 +31,12 @@ class Station
 
   def train_by_type(type)
     @trains_on_station.each { |train| puts train.number if train.kind_of?(type) }
+  end
+
+  private
+
+  def validate!
+    raise "Number can't be nil" if name.nil?
   end
 
 end

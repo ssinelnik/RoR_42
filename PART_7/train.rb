@@ -1,12 +1,16 @@
 require_relative 'russian_railways'
 require_relative 'instance_counter'
+require_relative 'validate'
 
 class Train
   include RussianRailways
   include InstanceCounter
+  include Validate
 
   attr_reader :number, :wagons
   attr_accessor :speed
+
+  NUMBER_FORMAT = /^[a-zа-я\d]{3}-*[a-zа-я\d]{2}$/
 
   @@trains = []
 
@@ -16,10 +20,11 @@ class Train
 
   def initialize(number)
     @number = number
+    validate!
     @speed = 0
     @wagons = []
     @@trains << self
-      register_instance
+    register_instance
   end
 
   def stop
@@ -71,4 +76,10 @@ class Train
   protected
 
   attr_writer :wagon # пользователь НЕ сможет добавить вагон, НО споможет сделать это в отдельном специально методе
+
+  def validate!
+    raise "Number can't be nil" if number.nil?
+    raise "Number should be at least 5 symbols" if number.length < 5
+    raise "Number has invalid number format" if number !~ NUMBER_FORMAT
+  end
 end
