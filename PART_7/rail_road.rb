@@ -117,7 +117,6 @@ class RailRoad
     else
       puts "Ошибка"
     end
-    puts "#{@trains}"
   end
 
   def add_route
@@ -149,7 +148,6 @@ class RailRoad
     else
       puts "Ошибка!"
     end
-    puts "#{@routes}"
   end
 
   def new_route
@@ -164,7 +162,6 @@ class RailRoad
 
     route = Route.new(user_route, @stations.find{|s| s.name == user_first}, @stations.find{|s| s.name == user_last})
     @routes << route
-    puts "#{@routes}"
   end
 
   def new_train
@@ -177,13 +174,18 @@ class RailRoad
     if user_type == :passenger
       user_train = PassengerTrain.new(user_train)
       @trains << user_train
+      puts "Поезд #{user_train.number} создан."
     elsif user_type == :cargo
       user_train = CargoTrain.new(user_train)
       @trains << user_train
+      puts "Поезд #{user_train.number} создан."
     else
       puts "Ошибка!"
     end
-    puts "#{@trains}"
+    rescue RuntimeError => e
+      puts "Проверьте правильность ввода Error: #{e}"
+      puts "Повторите ввод"
+    retry
   end
 
   def new_station
