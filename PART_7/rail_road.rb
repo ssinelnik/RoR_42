@@ -172,6 +172,7 @@ class RailRoad
     user_type = gets.chomp
 
     if user_type == :passenger
+    #if user_type == "passenger"
       user_train = PassengerTrain.new(user_train)
       @trains << user_train
       puts "Поезд #{user_train.number} создан."
@@ -182,10 +183,10 @@ class RailRoad
     else
       puts "Ошибка!"
     end
-    rescue RuntimeError => e
-      puts "Проверьте правильность ввода Error: #{e}"
-      puts "Повторите ввод"
-    retry
+#    rescue RuntimeError => e
+#      puts "Проверьте правильность ввода Error: #{e}"
+#      puts "Повторите ввод"
+#    retry
   end
 
   def new_station
