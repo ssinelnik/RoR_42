@@ -183,10 +183,10 @@ class RailRoad
     else
       puts "Ошибка!"
     end
-#    rescue RuntimeError => e
-#      puts "Проверьте правильность ввода Error: #{e}"
-#      puts "Повторите ввод"
-#    retry
+   rescue RuntimeError => e
+     puts "Проверьте правильность ввода Error: #{e}"
+     puts "Повторите ввод"
+   retry
   end
 
   def new_station

@@ -47,6 +47,7 @@ sqrt(-1)
 
 #----------------------------------------------------------------------------
 
+=begin
 def connect_to_wikipedia
   #...
   raise "Connection error"
@@ -62,3 +63,4 @@ rescue RuntimeError
 ensure # run any ways
   puts "There was #{attempt} attempts"
 end
+=end
