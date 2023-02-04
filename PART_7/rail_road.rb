@@ -168,11 +168,13 @@ class RailRoad
     puts "Введите номер поезда."
     user_train = gets.chomp
 
+    # if ()
+
     puts "Введите тип поезда. (passenger or cargo)"
     user_type = gets.chomp
 
     if user_type == :passenger
-    #if user_type == "passenger"
+    # if user_type == "passenger"
       user_train = PassengerTrain.new(user_train)
       @trains << user_train
       puts "Поезд #{user_train.number} создан."
@@ -197,5 +199,5 @@ class RailRoad
     @stations << user_station
     puts "#{@stations}"
   end
-
+  
 end

@@ -10,7 +10,7 @@ class Train
   attr_reader :number, :wagons
   attr_accessor :speed
 
-  NUMBER_FORMAT = /^[a-zа-я\d]{3}-*[a-zа-я\d]{2}$/
+  NUMBER_FORMAT = /^[a-zа-я\d]{3}-*[a-zа-я\d]{2}$/ # g7777
 
   @@trains = []
 
